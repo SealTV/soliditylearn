@@ -18,6 +18,11 @@ async function main() {
 
   await lock.deployed();
 
+  const Store = await hre.ethers.getContractFactory("Store");
+  const store = await Store.deploy(version, { value: "v0.0.1" });
+
+  await store.deployed();
+
   console.log(
     `Lock with 1 ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
   );
